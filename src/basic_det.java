@@ -1,17 +1,17 @@
-class patient{
-    private String name;
-    private String cond;
+class Patient{
+private String name;
+private String cond;
 
-    public patient(String name, String cond){
-        this.name=name;
-        this.cond=cond;
-    }
-    public String getCond(){
-        return cond;
+public Patient(String name,String cond){
+this.name=name;
+this.cond=cond;
+}
 
-    }
+public String getName(){
+return name;
+}
 
-    public String getName(){
-        return name;
-    }
+public String getCond(){
+return cond;
+}
 }
