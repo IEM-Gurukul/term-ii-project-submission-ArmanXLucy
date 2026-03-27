@@ -1,29 +1,51 @@
-class Hospital{
+import java.util.Scanner;
+
+public class Hospital{
 public static void main(String[] args){
 
-patient p1 = new patient("Arman","Fever");
-patient p2 = new patient("Rahul","Injury");
-patient p3 = new patient("Ali","Heart");
+Scanner sc=new Scanner(System.in);
 
-Treatment t;
+while(true){
 
-System.out.println(p1.getName() + " condition: " + p1.getCond());
-if(p1.getCond().equals("Fever")){
-t = new Medicine();
-t.treat(p1);
+System.out.print("\nEnter Patient Name: ");
+String name=sc.nextLine();
+
+System.out.print("Enter Disease (fever/injury/heart): ");
+String cond=sc.nextLine();
+
+System.out.println("Select Doctor:");
+System.out.println("1. Dr. Sharma");
+System.out.println("2. Dr. Khan");
+System.out.println("3. Dr. Roy");
+
+int choice=sc.nextInt();
+sc.nextLine();
+
+Doctor d;
+
+if(choice==1){
+d=new Doctor("Sharma");
+}
+else if(choice==2){
+d=new Doctor("Khan");
+}
+else{
+d=new Doctor("Roy");
 }
 
-System.out.println(p2.getName() + " condition: " + p2.getCond());
-if(p2.getCond().equals("Injury")){
-t = new FirstAid();
-t.treat(p2);
+Patient p=new Patient(name,cond);
+
+d.treatPatient(p);
+
+System.out.print("\nAdd another patient? (yes/no): ");
+String again=sc.nextLine();
+
+if(!again.equalsIgnoreCase("yes")){
+break;
+}
 }
 
-System.out.println(p3.getName() + " condition: " + p3.getCond());
-if(p3.getCond().equals("Heart")){
-t = new Surgery();
-t.treat(p3);
-}
+System.out.println("\nSystem Closed");
 
 }
 }
