@@ -1,21 +1,29 @@
-class Doctor {
+class Doctor{
+String docName;
 
-    public void treatPatient(patient p) {
-
-        if(p.getCond().equals("Fever")) {
-            Treatment t = new Medicine();
-            t.treat(p);
-        }
-
-        else if(p.getCond().equals("Injury")) {
-            Treatment t = new FirstAid();
-            t.treat(p);
-        }
-
-        else if(p.getCond().equals("Heart Attack")) {
-            Treatment t = new Surgery();
-            t.treat(p);
-        }
-    }
+Doctor(String docName){
+this.docName=docName;
 }
 
+public void treatPatient(Patient p){
+
+System.out.println("\nDoctor "+docName+" is checking "+p.getName());
+
+Treatment t;
+
+if(p.getCond().equalsIgnoreCase("fever")){
+t=new Medicine();
+}
+else if(p.getCond().equalsIgnoreCase("injury")){
+t=new FirstAid();
+}
+else if(p.getCond().equalsIgnoreCase("heart")){
+t=new Surgery();
+}
+else{
+t=new Treatment();
+}
+
+t.treat(p);
+}
+}
